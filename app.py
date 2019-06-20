@@ -15,7 +15,7 @@ def scan_img():
   if request.methods == 'POST':
     image = request.form['image']
     scan(image)
-    return jsonify({test: 'test'})
+    return jsonify({'test': 'test'})
 
 if __name__ == '__main__':
    app.run(debug = False)
