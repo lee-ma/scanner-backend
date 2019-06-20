@@ -12,7 +12,7 @@ def index():
 @app.route('/scan', methods=['POST'])
 def scan_img():
   print('hit')
-  if request.methods == 'POST':
+  if request.method == 'POST':
     image = request.form['image']
     scan(image)
     return jsonify({'test': 'test'})
