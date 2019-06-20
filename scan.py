@@ -44,5 +44,5 @@ def scan(base64_img):
   warped = (warped > threshold).astype("uint8") * 255
 
   warped = imutils.resize(warped, height = 650)
-  img_str = cv2.imencode('.jpg', warped)[1].toString()
+  img_str = cv2.imencode('.jpg', warped)[1].tostring()
   return img_str
