@@ -37,6 +37,4 @@ def scan(img):
   threshold = threshold_local(warped, 11, offset=10, method="gaussian")
   warped = (warped > threshold).astype("uint8") * 255
 
-  cv2.imshow("Original", imutils.resize(original_img, height=650))
-  cv2.imshow("Scanned", imutils.resize(warped, height=650))
-  cv2.waitKey(0)
+  return warped
