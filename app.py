@@ -13,7 +13,7 @@ def index():
 def scan_img():
   print('hit')
   if request.method == 'POST':
-    image = request.form['image']
+    image = request.json['image']
     scan(image)
     return jsonify({'test': 'test'})
 
