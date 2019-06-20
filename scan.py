@@ -4,9 +4,15 @@ import numpy as np
 import argparse
 import cv2
 import imutils
+import base64
 
-def scan(img):
-  image = cv2.imread(img)
+def readb64(uri):
+   nparr = np.fromstring(base64.b64decode(uri), np.uint8)
+   img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+   return img
+
+def scan(base64_img):
+  image = readb64(base64_img)
   ratio = image.shape[0] / 500.0
   original_img = image.copy()
   image = imutils.resize(image, height = 500)
@@ -23,13 +29,15 @@ def scan(img):
 
   for contour in contours:
     perimeter = cv2.arcLength(contour, True)
-    approx = cv2.approxPolyDP(contour, 0.02*perimeter, True)
+    approx = cv2.approxPolyDP(contour, 0.08*perimeter, True)
 
     print(len(approx))
 
     if len(approx) == 4:
       screenContours = approx
       break
+
+  cv2.drawContours(image, [screenContours], -1, (0, 255, 0), 2)
 
   warped = four_point_transform(original_img, screenContours.reshape(4, 2) * ratio)
 

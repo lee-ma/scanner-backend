@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 from scan import scan
 
@@ -11,11 +11,10 @@ def index():
 
 @app.route('/scan', methods=['POST'])
 def scan_img():
-  print('hit')
   if request.method == 'POST':
     image = request.json['image']
-    scan(image)
-    return jsonify({'test': 'test'})
+    img = scan(image)
+    return send_file(img)
 
 if __name__ == '__main__':
    app.run(debug = False)
