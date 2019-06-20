@@ -31,8 +31,6 @@ def scan(base64_img):
     perimeter = cv2.arcLength(contour, True)
     approx = cv2.approxPolyDP(contour, 0.08*perimeter, True)
 
-    print(len(approx))
-
     if len(approx) == 4:
       screenContours = approx
       break
@@ -45,4 +43,6 @@ def scan(base64_img):
   threshold = threshold_local(warped, 11, offset=10, method="gaussian")
   warped = (warped > threshold).astype("uint8") * 255
 
-  return warped
+  warped = imutils.resize(warped, height = 650)
+  img_str = cv2.imencode('.jpg', warped)[1].toString()
+  return img_str
