@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 import base64
-import img2pdf
 from scan import scan
 
 app = Flask(__name__)

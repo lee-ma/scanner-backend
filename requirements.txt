@@ -13,7 +13,6 @@ greenlet==0.4.15
 gunicorn==19.9.0
 idna==2.8
 imageio==2.5.0
-img2pdf==0.3.3
 imutils==0.5.2
 isort==4.3.18
 itsdangerous==1.1.0
