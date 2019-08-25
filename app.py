@@ -15,8 +15,8 @@ def scan_img():
   if request.method == 'POST':
     image = request.json['image']
     img = scan(image)
-    # pdf = img2pdf.convert(img)
-    return send_file(img, mimetype="image/jpeg")
+    base64_img_str = base64.b64encode(img).decode('ascii')
+    return jsonify({'image': base64_img_str})
 
 if __name__ == '__main__':
    app.run(debug = False)
