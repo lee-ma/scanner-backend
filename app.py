@@ -14,9 +14,9 @@ def index():
 def scan_img():
   if request.method == 'POST':
     image = request.json['image']
+    print(image)
     img = scan(image)
     base64_img_str = base64.b64encode(img).decode('ascii')
-    print(base64_img_str)
     return jsonify({'image': base64_img_str})
 
 if __name__ == '__main__':
