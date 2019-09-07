@@ -4,7 +4,7 @@ This is an API endpoint to take in an image of a piece of paper, resize it and t
 
 This is based off of the following: https://www.pyimagesearch.com/2014/09/01/build-kick-ass-mobile-document-scanner-just-5-minutes/
 
-I have taken the above and turned it into an API endpoint that takes in a base64 encoded image, and returns a base64 encoded image
+I have taken the above and turned it into an API endpoint that takes in a base64 encoded image string, and returns a base64 encoded image string
 
 ## To run locally
 1. clone repo
